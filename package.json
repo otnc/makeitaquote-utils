@@ -39,7 +39,56 @@
       },
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
-    }
+    },
+    "./http": {
+      "types": {
+        "import": "./dist/http.d.mts",
+        "require": "./dist/http.d.cts"
+      },
+      "import": "./dist/http.mjs",
+      "require": "./dist/http.cjs"
+    },
+    "./errors": {
+      "types": {
+        "import": "./dist/errors.d.mts",
+        "require": "./dist/errors.d.cts"
+      },
+      "import": "./dist/errors.mjs",
+      "require": "./dist/errors.cjs"
+    },
+    "./discord": {
+      "types": {
+        "import": "./dist/discord.d.mts",
+        "require": "./dist/discord.d.cts"
+      },
+      "import": "./dist/discord.mjs",
+      "require": "./dist/discord.cjs"
+    },
+    "./markdown": {
+      "types": {
+        "import": "./dist/markdown.d.mts",
+        "require": "./dist/markdown.d.cts"
+      },
+      "import": "./dist/markdown.mjs",
+      "require": "./dist/markdown.cjs"
+    },
+    "./mfm": {
+      "types": {
+        "import": "./dist/mfm.d.mts",
+        "require": "./dist/mfm.d.cts"
+      },
+      "import": "./dist/mfm.mjs",
+      "require": "./dist/mfm.cjs"
+    },
+    "./twitter": {
+      "types": {
+        "import": "./dist/twitter.d.mts",
+        "require": "./dist/twitter.d.cts"
+      },
+      "import": "./dist/twitter.mjs",
+      "require": "./dist/twitter.cjs"
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist"
@@ -62,8 +111,15 @@
     "ci": "biome ci",
     "prepublishOnly": "npm run build"
   },
+  "dependencies": {
+    "discomd": "^1.2.0",
+    "mfm-js": "^0.26.0",
+    "markdown-it": "^15.0.1",
+    "ofetch": "^1.5.1"
+  },
   "devDependencies": {
     "@biomejs/biome": "^2.5.11",
+    "@types/markdown-it": "^14.2.0",
     "@types/node": "^22.20.1",
     "@vitest/coverage-v8": "^4.1.11",
     "tsdown": "^0.22.14",
