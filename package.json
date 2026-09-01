@@ -94,11 +94,12 @@
     "dist"
   ],
   "engines": {
-    "node": ">=22"
+    "node": ">=18"
   },
   "scripts": {
     "setup": "node scripts/setup.js",
     "build": "tsdown",
+    "check-dist": "node scripts/check-dist.cjs",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",

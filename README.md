@@ -82,7 +82,7 @@ neither pulls in a dependency the other subpaths don't already share.
 
 ## Requirements
 
-- Node.js >= 22
+- Node.js >= 18
 
 ## What's in scope
 

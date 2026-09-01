@@ -22,3 +22,40 @@ jobs:
       - run: npm run ci
       - run: npm run typecheck
       - run: npm run test
+
+  # `engines.node` (>=18) describes the built output in dist/, not the dev
+  # toolchain — tsdown/rolldown themselves need a newer Node to run. This
+  # builds once on a Node the toolchain supports, then smoke-tests the
+  # actual published artifact across the full range engines.node claims.
+  compat:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  compat-smoke:
+    needs: compat
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20, 22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm run check-dist

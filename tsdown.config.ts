@@ -13,7 +13,7 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   dts: true,
   clean: true,
-  // Node >= 22 supports ES2024
-  target: 'node22',
+  // Matches `engines.node` — nothing here needs newer than the ES2022 that Node 18 fully supports.
+  target: 'node18',
   platform: 'node',
 })
