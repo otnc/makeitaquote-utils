@@ -58,4 +58,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+      # Runtime deps only — no devDependencies, so this never touches
+      # tsdown/rolldown/vitest, which need a newer Node than the floor
+      # being verified here. `dist/*.cjs`/`.mjs` require these at runtime
+      # (a library build externalizes dependencies rather than bundling
+      # them), so check-dist.cjs needs them on disk to even load.
+      - run: npm install --omit=dev --ignore-scripts
       - run: npm run check-dist
