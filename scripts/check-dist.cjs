@@ -13,6 +13,7 @@ const discord = require('../dist/discord.cjs')
 const markdown = require('../dist/markdown.cjs')
 const mfm = require('../dist/mfm.cjs')
 const twitter = require('../dist/twitter.cjs')
+const validation = require('../dist/validation.cjs')
 const index = require('../dist/index.cjs')
 
 assert.equal(typeof http.createClient, 'function')
@@ -30,11 +31,17 @@ assert.equal(discord.formatUsername({ username: 'a', discriminator: '0' }), 'a')
 
 assert.equal(markdown.stripMarkdown('**bold**'), 'bold')
 assert.equal(mfm.stripMfm('$[jelly x]'), 'x')
+assert.equal(mfm.resolveNoteText({ text: 'hi', cw: 'spoiler' }), 'hi')
 
 assert.equal(typeof twitter.findTweetV2Author, 'function')
+assert.equal(twitter.stripTwitterText('𝗕𝗼𝗹𝗱'), 'Bold')
+
+assert.equal(validation.normalizeString('hi', 'text', 10), 'hi')
+assert.throws(() => validation.assertNonEmpty('', 'text'))
 
 assert.equal(typeof index.createClient, 'function')
 assert.equal(typeof index.MiQError, 'function')
+assert.equal(typeof index.deprecate, 'function')
 
 const client = http.createClient({ retry: 0, timeout: 5000 })
 client.get('https://invalid.invalid.test/').catch((cause) => {

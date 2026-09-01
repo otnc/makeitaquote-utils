@@ -1,6 +1,25 @@
 import type { MfmNode } from 'mfm-js'
 import * as mfm from 'mfm-js'
 
+/** The slice of a Misskey note `resolveNoteText()` reads. */
+export interface NoteTextLike {
+  text?: string | null
+  /** Content warning. Only read when `preferCw` is true. */
+  cw?: string | null
+}
+
+/**
+ * Picks which of a note's `text`/`cw` to quote, with the other as a fallback
+ * when the preferred one is absent.
+ *
+ * A CW is what a reader saw *before* choosing to open the note, so preferring
+ * it is occasionally the honest thing to do — but the note's own text is the
+ * usual intent, so it wins by default.
+ */
+export function resolveNoteText(note: NoteTextLike, preferCw = false): string {
+  return preferCw ? (note.cw ?? note.text ?? '') : (note.text ?? note.cw ?? '')
+}
+
 /**
  * Strips MFM — Misskey Flavoured Markup — down to plain text.
  *

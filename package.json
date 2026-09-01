@@ -88,6 +88,14 @@
       "import": "./dist/twitter.mjs",
       "require": "./dist/twitter.cjs"
     },
+    "./validation": {
+      "types": {
+        "import": "./dist/validation.d.mts",
+        "require": "./dist/validation.d.cts"
+      },
+      "import": "./dist/validation.mjs",
+      "require": "./dist/validation.cjs"
+    },
     "./package.json": "./package.json"
   },
   "files": [

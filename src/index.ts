@@ -1,3 +1,4 @@
+export { deprecate, resetDeprecationsForTests } from './deprecate'
 export {
   errorMessage,
   MiQError,

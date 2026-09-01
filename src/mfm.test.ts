@@ -1,5 +1,21 @@
 import { describe, expect, it } from 'vitest'
-import { stripMfm } from './mfm'
+import { resolveNoteText, stripMfm } from './mfm'
+
+describe('resolveNoteText', () => {
+  it('prefers text by default, falling back to cw', () => {
+    expect(resolveNoteText({ text: 'hi', cw: 'spoiler' })).toBe('hi')
+    expect(resolveNoteText({ cw: 'spoiler' })).toBe('spoiler')
+  })
+
+  it('prefers cw when asked, falling back to text', () => {
+    expect(resolveNoteText({ text: 'hi', cw: 'spoiler' }, true)).toBe('spoiler')
+    expect(resolveNoteText({ text: 'hi' }, true)).toBe('hi')
+  })
+
+  it('falls back to an empty string when neither is set', () => {
+    expect(resolveNoteText({})).toBe('')
+  })
+})
 
 describe('stripMfm', () => {
   it('leaves plain text alone', () => {
