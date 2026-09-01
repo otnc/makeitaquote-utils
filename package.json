@@ -1,18 +1,32 @@
 {
-  "name": "<package-name>",
+  "name": "@makeitaquote/utils",
   "version": "0.0.0",
-  "description": "<package-description>",
-  "keywords": [],
-  "homepage": "<package-git>#readme",
+  "description": "Utilities related to \"Make it a Quote\".",
+  "keywords": [
+    "img",
+    "image",
+    "gen",
+    "generate",
+    "miq",
+    "makeitaquote",
+    "Make it a Quote",
+    "quote",
+    "discord",
+    "twitter",
+    "misskey",
+    "markdown",
+    "api"
+  ],
+  "homepage": "https://github.com/otnc/makeitaquote-utils#readme",
   "bugs": {
-    "url": "<package-git>/issues"
+    "url": "https://github.com/otnc/makeitaquote-utils/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+<package-git>.git"
+    "url": "git+https://github.com/otnc/makeitaquote-utils.git"
   },
-  "license": "<package-license>",
-  "author": "<package-author>",
+  "license": "MIT",
+  "author": "otoneko.",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
